@@ -2,6 +2,10 @@
 
 Managed by [rcm](https://github.com/thoughtbot/rcm)
 
+Starship shell prompt preview:
+
+![Josh York Starship shell prompt](shell_prompt.png)
+
 ## Steps for setting up a new machine
 
 ### Install
