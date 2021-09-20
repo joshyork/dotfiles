@@ -1,6 +1,10 @@
 format = """
-$directory$nodejs$git_branch
-$character"""
+$directory\
+$nodejs\
+$git_branch\
+$line_break\
+$character\
+"""
 
 [directory]
 style = "#03cffc bold"
