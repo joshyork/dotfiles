@@ -1,0 +1,20 @@
+format = """
+$directory$nodejs$git_branch
+$character"""
+
+[directory]
+style = "#03cffc bold"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+style = "#04ff00 bold"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[character]
+success_symbol = "[λ](#04ff00)"
+error_symbol = "[λ](red)"
+
+[package]
+disabled = true

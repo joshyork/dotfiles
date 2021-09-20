@@ -1,0 +1,14 @@
+[user]
+	name = Josh York
+	email = joshua.s.york@gmail.com
+[alias]
+	aa = add -A
+	amend = commit --amend --reuse-message=HEAD
+    co = checkout
+	s = status
+[pull]
+	rebase = false
+[includeIf "gitdir:~/code/personal/"]
+  path = ~/.gitconfig-personal
+[includeIf "gitdir:~/code/fullbeaker/"]
+  path = ~/.gitconfig-fullbeaker
