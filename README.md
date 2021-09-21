@@ -19,7 +19,7 @@ Starship shell prompt preview:
 
 ### Run / Additional Steps
 
-- `rcup` - use `rcm` to symlink dotfiles to their correct locations
+- `rcup -x shell_prompt.png` - use `rcm` to symlink dotfiles to their correct locations
 - `mkdir ~/code`
   - and subfolders like `personal` and "`company`". This needs to be coordinated with
     the `includeIf` paths in `gitconfig`
