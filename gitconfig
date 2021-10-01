@@ -5,7 +5,9 @@
 	aa = add -A
 	amend = commit --amend --reuse-message=HEAD
     co = checkout
+	rh = reset --hard HEAD
 	s = status
+	sa = stash --all
 [pull]
 	rebase = false
 [includeIf "gitdir:~/code/personal/"]
