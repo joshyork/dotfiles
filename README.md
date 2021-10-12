@@ -21,6 +21,7 @@ Starship shell prompt preview:
 - [ ] [fira code](https://github.com/tonsky/FiraCode)
 - [ ] [rcm](https://github.com/thoughtbot/rcm)
 - [ ] [yabai](https://github.com/koekeishiya/yabai#installation-and-configuration)
+- [ ] [jq](https://formulae.brew.sh/formula/jq) (used by yabai for json parsing)
 - [ ] [z jumping](https://github.com/agkozak/zsh-z#for-oh-my-zsh-users)
 - [ ] [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 - [ ] [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
