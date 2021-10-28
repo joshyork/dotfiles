@@ -2,7 +2,7 @@ ZSH_DISABLE_COMPFIX=true
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/Library/Python/3.9/bin:$HOME/.local/bin:$HOME/.ghcup/bin:/opt/homebrew/bin
 
-export ZSH="/Users/joshyork/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # THEME
 # theme / prompt is handled by starship
@@ -60,12 +60,13 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # YVM
-export YVM_DIR=/Users/joshyork/.yvm
+export YVM_DIR=$HOME/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-[ -f "/Users/joshyork/.ghcup/env" ] && source "/Users/joshyork/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
+# starship prompt
 eval "$(starship init zsh)"

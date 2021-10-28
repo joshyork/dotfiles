@@ -15,3 +15,5 @@
   path = ~/.gitconfig-personal
 [includeIf "gitdir:~/code/fullbeaker/"]
   path = ~/.gitconfig-fullbeaker
+[includeIf "gitdir:~/code/splunk/"]
+  path = ~/.gitconfig-splunk
