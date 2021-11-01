@@ -1,6 +1,7 @@
 format = """
 $directory\
 $nodejs\
+$custom\
 $git_branch\
 $line_break\
 $character\
@@ -22,3 +23,8 @@ error_symbol = "[λ](red)"
 
 [package]
 disabled = true
+
+[custom.gitwhoami]
+command = "git config user.email"  # shows output of command
+when = "exit 0"
+format = "[$output]($style) "

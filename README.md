@@ -27,6 +27,7 @@ Starship shell prompt preview:
 - [ ] [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 - [ ] [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [ ] [notion](https://www.notion.so/desktop)
+- [ ] [tig](https://formulae.brew.sh/formula/tig)
 
 ### Additional Steps
 

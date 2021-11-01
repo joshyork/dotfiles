@@ -13,30 +13,9 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# ALIASES
-alias g=git
-alias git-whoami='echo "Current user: $(git config user.email)"'
-alias n=npm
-alias nr="npm run"
-alias redis-up="docker kill redis || docker rm redis || docker run --name redis -p 6379:6379 -e ALLOW_EMPTY_PASSWORD=yes -d redis"
-alias y=yarn
-alias yabai-restart="brew services stop yassinebridi/formulae/yabai && brew services start yassinebridi/formulae/yabai"
-
-# FUNCTIONS
-function killPort {
-    kill $(lsof -ti tcp:$1)
-}
-
-function code {
-    if [[ $# = 0 ]]
-    then
-        open -a "Visual Studio Code" "."
-    else
-        local argPath="$1"
-        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
-        open -a "Visual Studio Code" "$argPath"
-    fi
-}
+[[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
+[[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
+[[ -s "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
 
 # z directory jumping utility
 source $ZSH_CUSTOM/plugins/zsh-z/zsh-z.plugin.zsh
