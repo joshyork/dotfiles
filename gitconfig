@@ -3,7 +3,7 @@
 	email = joshua.s.york@gmail.com
 [alias]
 	aa = add -A
-	amend = commit --amend --reuse-message=HEAD
+	amen = commit --amend --reuse-message=HEAD
     co = checkout
 	rh = reset --hard HEAD
 	s = status
