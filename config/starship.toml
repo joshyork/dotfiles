@@ -28,3 +28,4 @@ disabled = true
 command = "git config user.email"  # shows output of command
 when = "exit 0"
 format = "[$output]($style) "
+style = "#F1502F bold"
