@@ -1,51 +1,37 @@
-ZSH_DISABLE_COMPFIX=true
+# Load Antigen
+source "$HOME/.bin/antigen.zsh"
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/Library/Python/3.9/bin:$HOME/.local/bin:$HOME/.ghcup/bin:/opt/homebrew/bin
+### Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-export ZSH="$HOME/.oh-my-zsh"
+### Bundles
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle compleat
+antigen bundle npm
+antigen bundle vi-mode
+antigen bundle git-extras
+antigen bundle docker
+antigen bundle agkozak/zsh-z
+# antigen bundle skywind3000/z.lua
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zdharma/history-search-multi-word
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+antigen bundle lukechilds/zsh-nvm
 
-# THEME
-# theme / prompt is handled by starship
-# ZSH_THEME=""
+# Tell Antigen that you're done.
+antigen apply
 
-# PLUGINS
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
+# Load broken out config files
+[[ -s "$HOME/.zsh_env" ]] && source "$HOME/.zsh_env"
 [[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
 [[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
 [[ -s "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
-
-# z directory jumping utility
-source $ZSH_CUSTOM/plugins/zsh-z/zsh-z.plugin.zsh
-zstyle ':completion:*' menu select
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  elif [[ $(nvm version) != $(nvm version default)  ]]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-# YVM
-export YVM_DIR=$HOME/.yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 # starship prompt
 eval "$(starship init zsh)"
