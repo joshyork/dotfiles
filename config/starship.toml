@@ -8,13 +8,14 @@ $character\
 """
 
 [directory]
-style = "#03cffc bold"
+style = "#1ECBE1 bold"
 
 [nodejs]
 format = "[$symbol($version )]($style)"
-style = "#04ff00 bold"
+style = "#1FFF00 bold"
 
 [git_branch]
+style = "#07F8DC"
 format = "[$symbol$branch]($style) "
 
 [character]
@@ -28,4 +29,4 @@ disabled = true
 command = "git config user.email"  # shows output of command
 when = "exit 0"
 format = "[$output]($style) "
-style = "#F1502F bold"
+style = "#DF9520 bold"

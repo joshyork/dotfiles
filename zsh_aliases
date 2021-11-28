@@ -5,4 +5,4 @@ alias nr="npm run"
 alias redis-up="docker kill redis || docker rm redis || docker run --name redis -p 6379:6379 -e ALLOW_EMPTY_PASSWORD=yes -d redis"
 alias t="tig status"
 alias y=yarn
-alias yabai-restart="brew services stop yassinebridi/formulae/yabai && brew services start yassinebridi/formulae/yabai"
+alias yabai-restart="brew services stop xorpse/formulae/yabai && brew services start xorpse/formulae/yabai"

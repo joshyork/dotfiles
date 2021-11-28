@@ -20,8 +20,6 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle rjhilgefort/history-search-multi-word
-export NVM_AUTO_USE=true
-antigen bundle lukechilds/zsh-nvm
 
 # Tell Antigen that you're done.
 antigen apply
@@ -34,3 +32,5 @@ antigen apply
 
 # starship prompt
 eval "$(starship init zsh)"
+# fast node manager
+eval "$(fnm env --use-on-cd)"
