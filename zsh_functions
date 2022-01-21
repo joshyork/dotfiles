@@ -12,3 +12,7 @@ function code {
         open -a "Visual Studio Code" "$argPath"
     fi
 }
+
+function kitty-theme() {
+    ln -sf ~/.config/kitty-themes/themes/$1.conf ~/.config/kitty/theme.conf
+}
