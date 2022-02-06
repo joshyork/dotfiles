@@ -8,34 +8,49 @@ Starship shell prompt preview:
 
 ## Steps for setting up a new machine
 
-### Install
+- Change trackpad direction
 
-- change trackpad direction
-- [ ] Swap caps lock for ESC in system preferences
-- [ ] System Prefs > Mission Control > Uncheck Automatically rearrange Spaces
-- [ ] Password Manager (and chrome extension)
-- [ ] [Alfred](https://www.alfredapp.com/)
-- https://www.alfredapp.com/help/troubleshooting/cmd-space/
-- chrome
-- set default browser
-- [ ] `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
-- [ ] [VSCode](https://code.visualstudio.com/download)
-- [ ] [iTerm](https://iterm2.com/version3.html)
-- [ ] [homebrew](https://docs.brew.sh/Installation)
-- brew install starship
-- [ ] `rcup -x shell_prompt.png -x iterm_profile.json` - use `rcm` to symlink dotfiles to their correct locations
-- [ ] [rcm](https://github.com/thoughtbot/rcm)
-- [ ] [nerd font](https://www.nerdfonts.com/font-downloads)
-- [ ] [fira code](https://github.com/tonsky/FiraCode)
-- [ ] [yabai](https://github.com/koekeishiya/yabai#installation-and-configuration)
-- [ ] [jq](https://formulae.brew.sh/formula/jq) (used by yabai for json parsing)
-- [ ] [notion](https://www.notion.so/desktop)
-- [ ] [tig](https://formulae.brew.sh/formula/tig)
+  `Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
 
-### Additional Steps
+- Swap caps lock for ESC in system preferences
 
-- [ ] Import iTerm profile (from `~/.dotfiles` folder)
+  `Settings > Keyboard > Modifier Keys`
 
-- [ ] `mkdir ~/code`
-  - [ ] and subfolders like `personal` and "`company`". This needs to be coordinated with
-        the `includeIf` paths in `gitconfig`
+- Disable automatic sorting of macOS spaces
+
+  `Settings > Mission Control > Uncheck 'Automatically rearrange Spaces'`
+
+- Allow Alfred to use `cmd+space`
+  https://www.alfredapp.com/help/troubleshooting/cmd-space/
+
+- Generate ssh key and add to github
+
+  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+  - `ssh-keygen -t ed25519 -C "joshua.s.york@gmail.com"`
+  - `eval "$(ssh-agent -s)"`
+  - `open ~/.ssh/config`
+  - `touch ~/.ssh/config`
+  - `vim ~/.ssh/config`
+    ```
+    Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_ed25519
+    ```
+  - `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
+
+- clone this repo, update `rcrc` with `DOTFILES_DIRS`
+- `rcup`
+- `./macos-setup.sh`
+- Set default browser
+
+  `Settings > General`
+
+- Allow press and hold for VSCode
+
+  `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
+
+- Download and install Fira Code Nerd Font
+
+  https://www.nerdfonts.com/font-downloads

@@ -1,0 +1,2 @@
+DOTFILES_DIRS="$HOME/code/personal/dotfiles"
+EXCLUDES="shell_prompt.png macos-setup.sh"
