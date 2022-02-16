@@ -40,29 +40,33 @@ yabai -m config active_window_border_color   0xFF00AAFF
 yabai -m config normal_window_border_color   0x01000000
 
 # Window Desktop Placement
-## Browsing / Notes / Meetings
-yabai -m rule --add app="^Google Chrome$" space="1"
-yabai -m rule --add app="^Firefox$" space="1"
-yabai -m rule --add app="^Notion$" space="1"
-yabai -m rule --add app="^Zoom$" space="1"
-yabai -m rule --add app="^Zoom Meeting$" space="1"
+## Browser / Notes / Meetings
+yabai -m rule --add app="^Google Chrome" space="1"
+yabai -m rule --add app="^Firefox" space="1"
+yabai -m rule --add app="^Notion" space="1"
+yabai -m rule --add app="^Zoom" space="1"
+yabai -m rule --add app="^Zoom Meeting" space="1"
 
 ## Terminal
-yabai -m rule --add app="^kitty$" space="2"
-yabai -m rule --add app="^iTerm2$" space="2"
+yabai -m rule --add app="^kitty" space="2"
+yabai -m rule --add app="^iTerm2" space="2"
 
-### Code
-yabai -m rule --add app="^Code$" space="3"
+## Code
+yabai -m rule --add app="^Code" space="3"
 
 ## Work Chat
-yabai -m rule --add app="^Slack$" space="4"
+yabai -m rule --add app="^Slack" space="4"
 
-# Personal Chat
-yabai -m rule --add app="^Discord$" space="5"
-yabai -m rule --add app="^Messages$" space="5"
+## Personal Chat
+yabai -m rule --add app="^Discord" space="5"
+yabai -m rule --add app="^Messages" space="5"
 
 ## Todos/Productivity
-yabai -m rule --add app="^Harvest$" space="6"
-yabai -m rule --add app="^Todoist$" space="6"
-yabai -m rule --add app="^Postman$" space="6"
-yabai -m rule --add app="^RunJS$" space="6"
+yabai -m rule --add app="^Harvest" space="6"
+yabai -m rule --add app="^Todoist" space="6"
+yabai -m rule --add app="^RunJS" space="6"
+
+## Data
+yabai -m rule --add app="^Postman" space="7"
+yabai -m rule --add app="^MongoDB Compass" space="7"
+yabai -m rule --add app="^RedisInsight" space="7"
