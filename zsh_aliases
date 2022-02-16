@@ -1,3 +1,4 @@
+alias d=docker
 alias g=git
 alias git-whoami='echo "Current user: $(git config user.email)"'
 alias n=npm

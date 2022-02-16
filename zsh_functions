@@ -16,3 +16,8 @@ function code {
 function kitty-theme() {
     ln -sf ~/.config/kitty-themes/themes/$1.conf ~/.config/kitty/theme.conf
 }
+
+# https://cht.sh
+cheat() {
+  curl cht.sh/$1
+}

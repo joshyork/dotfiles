@@ -4,6 +4,7 @@
 [alias]
 	aa = add -A
 	amen = commit --amend --reuse-message=HEAD
+	b = branch
     co = checkout
 	rh = reset --hard HEAD
 	s = status
