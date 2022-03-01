@@ -1,4 +1,9 @@
 alias d=docker
+alias d-containers-stop-all='docker stop $(docker ps -a -q)'
+alias d-containers-remove-all='docker rm $(docker ps -a -q)'
+alias d-images-remove-all='docker rmi $(docker images -q)'
+alias d-volume-remove-all='docker volume rm $(docker volume ls -qf dangling=true)'
+d-exec() { docker exec -it $1 bash; }
 alias g=git
 alias git-whoami='echo "Current user: $(git config user.email)"'
 alias n=npm
