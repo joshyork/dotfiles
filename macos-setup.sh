@@ -48,6 +48,7 @@ CASKS=(
     postman,"Postman"
     notion,"Notion"
     kitty,"Kitty"
+    keycastr,"KeyCastr"
 )
 echo "START: Homebrew casks"
 (
