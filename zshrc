@@ -1,3 +1,9 @@
+# Load broken out config files
+[[ -s "$HOME/.zsh_env" ]] && source "$HOME/.zsh_env"
+[[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
+[[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
+[[ -s "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
+
 # Load Antigen
 source $(brew --prefix)/share/antigen/antigen.zsh
 
@@ -23,12 +29,6 @@ antigen bundle rjhilgefort/history-search-multi-word
 
 # Tell Antigen that you're done.
 antigen apply
-
-# Load broken out config files
-[[ -s "$HOME/.zsh_env" ]] && source "$HOME/.zsh_env"
-[[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
-[[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
-[[ -s "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
 
 # starship prompt
 eval "$(starship init zsh)"
