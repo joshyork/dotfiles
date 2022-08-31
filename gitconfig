@@ -18,3 +18,5 @@
   path = ~/.gitconfig-fullbeaker
 [includeIf "gitdir:~/code/splunk/"]
   path = ~/.gitconfig-splunk
+[includeIf "gitdir:~/code/origin/"]
+  path = ~/.gitconfig-origin
