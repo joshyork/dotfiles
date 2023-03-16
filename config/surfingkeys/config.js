@@ -57,8 +57,7 @@ function unmappings() {
 }
 
 function exceptions() {
-  api.unmapAllExcept([], /\/mail.google.com\//);
-  api.unmapAllExcept([], /\/youtube.com\//);
+  api.unmapAllExcept([], /mail.google.com|youtube.com/);
 }
 
 (function main() {
