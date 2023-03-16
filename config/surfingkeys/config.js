@@ -46,8 +46,11 @@ function mappings() {
 }
 
 function unmappings() {
-  api.unmap("C"); //
-  api.unmap("d"); // scroll half way
+  api.unmap("C");
+  api.unmap("d");
+  api.unmap("g");
+  api.unmap("f");
+  api.unmap("/");
 
   // disable emojis
   api.iunmap(":");
