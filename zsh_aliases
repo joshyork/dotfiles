@@ -9,10 +9,13 @@ alias git-whoami='echo "Current user: $(git config user.email)"'
 alias n=npm
 alias nr="npm run"
 alias redis-up="docker kill redis || docker rm redis || docker run --name redis -p 6379:6379 -e ALLOW_EMPTY_PASSWORD=yes -d redis"
-alias t="tig status"
+alias ts="tig status"
 alias y=yarn
 alias yabai-restart="brew services stop xorpse/formulae/yabai && brew services start xorpse/formulae/yabai"
 # K8
 alias incbot-logs="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot -c incident-response-bot -f"
 alias incbot-test-logs="kubectl get pods --namespace incident-response-bot-test | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot-test -c incident-response-bot -f"
+alias spur-bot-logs="kubectl get pods --namespace spur-bot | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot -c spur-bot -f"
 alias spur-bot-stage-logs="kubectl get pods --namespace spur-bot-stage | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot-stage -c spur-bot -f"
+alias incbot-db-backup="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json"
+alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed -ne '\''s/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p'\'' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json'
