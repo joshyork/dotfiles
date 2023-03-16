@@ -5,7 +5,6 @@ echo "START: XCode cli tools"
 xcode-select --install
 echo -e "END: XCode cli tools\n"
 
-
 echo "START: Homebrew"
 # Check for Homebrew to be present, install if it's missing
 if test ! $(which brew); then
@@ -24,6 +23,7 @@ FORMULAE=(
     antigen
     awscli
     coreutils
+    direnv
     fnm
     jondot/tap/hygen
     jq
@@ -40,22 +40,21 @@ brew install ${FORMULAE[@]}
 echo -e "END: Homebrew formulae\n"
 
 CASKS=(
-    alfred,"Alfred 4"
+    iterm2,"Iterm 2"
     1password,"1Password 7"
     google-chrome,"Google Chrome"
     visual-studio-code,"Visual Studio Code"
     todoist,"Todoist"
     postman,"Postman"
     notion,"Notion"
-    kitty,"Kitty"
     keycastr,"KeyCastr"
 )
 echo "START: Homebrew casks"
 (
 IFS=$'\n'
-for TOUPLE in ${CASKS[@]}; do
+for TUPLE in ${CASKS[@]}; do
     IFS=',';
-    set -- $TOUPLE
+    set -- $TUPLE
     if [[ ! -d "/Applications/$2.app" ]]; then
         echo "Installing $1 at $2"
         brew install --cask $1

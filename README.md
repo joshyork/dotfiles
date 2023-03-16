@@ -41,8 +41,8 @@ Starship shell prompt preview:
   - `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
 
 - clone this repo, update `rcrc` with `DOTFILES_DIRS`
-- `rcup`
 - `./macos-setup.sh`
+- `rcup`
 - Set default browser
 
   `Settings > General`

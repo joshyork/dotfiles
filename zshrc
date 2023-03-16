@@ -35,3 +35,5 @@ antigen apply
 eval "$(starship init zsh)"
 # fast node manager
 eval "$(fnm env --use-on-cd)"
+# direnv
+eval "$(direnv hook zsh)"
