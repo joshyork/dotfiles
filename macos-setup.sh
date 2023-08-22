@@ -9,7 +9,9 @@ echo "START: Homebrew"
 # Check for Homebrew to be present, install if it's missing
 if test ! $(which brew); then
     echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
     echo "Homebrew successfully installed"
 else
     echo "Homebrew already installed 👍"
@@ -48,6 +50,9 @@ CASKS=(
     postman,"Postman"
     notion,"Notion"
     keycastr,"KeyCastr"
+    raycast,"Raycast"
+    discord,"Discord"
+    ngrok,"Ngrok"
 )
 echo "START: Homebrew casks"
 (

@@ -8,20 +8,14 @@ Starship shell prompt preview:
 
 ## Steps for setting up a new machine
 
-- Change trackpad direction
+### Font
 
-  `Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
+- Show hidden files (cmd+shift+. when in Finder)
+- Download and install Fira Code Nerd Font
 
-- Swap caps lock for ESC in system preferences
+  https://www.nerdfonts.com/font-downloads
 
-  `Settings > Keyboard > Modifier Keys`
-
-- Disable automatic sorting of macOS spaces
-
-  `Settings > Mission Control > Uncheck 'Automatically rearrange Spaces'`
-
-- Allow Alfred to use `cmd+space`
-  https://www.alfredapp.com/help/troubleshooting/cmd-space/
+### SSH Key
 
 - Generate ssh key and add to github
 
@@ -40,17 +34,36 @@ Starship shell prompt preview:
     ```
   - `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
 
-- clone this repo, update `rcrc` with `DOTFILES_DIRS`
+### Setup dotfiles
+
+- clone this repo, double check `DOTFILES_DIRS` env var value in `rcrc`
 - `./macos-setup.sh`
-- `rcup`
-- Set default browser
-
-  `Settings > General`
-
+- `rcup -d $HOME/code/personal/dotfiles`
 - Allow press and hold for VSCode
 
   `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
 
-- Download and install Fira Code Nerd Font
+### MacOS System Settings
 
-  https://www.nerdfonts.com/font-downloads
+- Disable spotlight cmd+space
+- Set Raycast trigger to cmd+space
+- Import raycast settings from dropbox
+- Change trackpad direction
+
+  `Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
+
+- Map Caps lock -> Escape
+
+  `Settings > Keyboard > Modifier Keys`
+
+- Disable automatic sorting of spaces
+
+  `Settings > Mission Control > Uncheck 'Automatically rearrange Spaces'`
+
+- Auto hide Dock
+
+  `Settings > Desktop & Dock > check 'Automatically hide and show the Dock'`
+
+- Set default browser
+
+  `Settings > General`
