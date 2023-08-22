@@ -43,6 +43,8 @@ Starship shell prompt preview:
 
   `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
 
+- Copy over `~/.zsh_secrets`, `~/.kube/config`, `~/.aws/credentials`, etc if necessary
+
 ### MacOS System Settings
 
 - Disable spotlight cmd+space
