@@ -4,6 +4,7 @@ $nodejs\
 $custom\
 $git_status\
 $git_branch\
+$time\
 $line_break\
 $character\
 """
@@ -29,7 +30,14 @@ error_symbol = "[λ](red)"
 disabled = true
 
 [custom.gitwhoami]
-command = "git config user.email"  # shows output of command
+command = "git config user.email" # shows output of command
 when = "exit 0"
 format = "[$output]($style) "
 style = "#DF9520 bold"
+
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = '%r'
+style = 'gray'
