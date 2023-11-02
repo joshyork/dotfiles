@@ -4,7 +4,6 @@ $nodejs\
 $custom\
 $git_status\
 $git_branch\
-$time\
 $line_break\
 $character\
 """
@@ -14,13 +13,14 @@ stashed = ""
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+style = "#ff6060 bold"
 
 [directory]
 style = "#1ECBE1 bold"
 
 [nodejs]
 format = "[$symbol($version )]($style)"
-style = "#1FFF00 bold"
+style = "#68A063 bold"
 
 [character]
 success_symbol = "[λ](#04ff00)"
@@ -33,7 +33,7 @@ disabled = true
 command = "git config user.email" # shows output of command
 when = "exit 0"
 format = "[$output]($style) "
-style = "#DF9520 bold"
+style = "#F1502F bold"
 
 
 [time]
