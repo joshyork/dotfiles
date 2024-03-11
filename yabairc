@@ -84,6 +84,7 @@ yabai -m rule --add app="^Messages" space="5"
 
 ## Todos/Productivity
 
+yabai -m rule --add app="^Toggl Track" space="6"
 yabai -m rule --add app="^Harvest" space="6"
 yabai -m rule --add app="^Todoist" space="6"
 yabai -m rule --add app="^RunJS" space="6"
