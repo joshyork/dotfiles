@@ -10,6 +10,8 @@
 	s = status
 	sa = stash --all
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null && git push origin -u \"$1\" || git checkout \"$1\"; }; f"
+[pull]
+	rebase = true
 [init]
 	defaultBranch = main
 [includeIf "gitdir:~/code/personal/"]
