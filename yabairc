@@ -72,6 +72,7 @@ yabai -m rule --add app="^iTerm2" space="2"
 ## Code
 
 yabai -m rule --add app="^Code" space="3"
+yabai -m rule --add app="^Cursor" space="3"
 
 ## Work Chat
 
