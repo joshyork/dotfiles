@@ -94,7 +94,7 @@ yabai -m rule --add app="^RunJS" space="6"
 
 yabai -m rule --add app="^Postman" space="7"
 yabai -m rule --add app="^MongoDB Compass" space="7"
-yabai -m rule --add app="^RedisInsight" space="7"
+yabai -m rule --add app="^Redis Insight" space="7"
 yabai -m rule --add app="^Arctype" space="7"
 yabai -m rule --add app="^TablePlus" space="7"
 
