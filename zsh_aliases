@@ -11,10 +11,12 @@ alias nr="npm run"
 alias ts="tig status"
 alias y=yarn
 # splunk k8s
+alias kube-stage="kubectl config use-context cyclops-pdx10-play-payne.splunk8s.io"
+alias kube-prod="kubectl config use-context cyclops-pdx10-prod-goodall.splunk8s.io"
 alias incbot-logs="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot -c incident-response-bot -f"
 alias incbot-test-logs="kubectl get pods --namespace incident-response-bot-test | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot-test -c incident-response-bot -f"
-alias spur-bot-logs="kubectl get pods --namespace spur-bot | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot -c spur-bot -f"
-alias spur-bot-stage-logs="kubectl get pods --namespace spur-bot-stage | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot-stage -c spur-bot -f"
+alias spur-bot-logs="kube-prod && kubectl get pods --namespace spur-bot | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot -c spur-bot -f"
+alias spur-bot-stage-logs="kube-stage && kubectl get pods --namespace spur-bot-stage | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot-stage -c spur-bot -f"
 alias incbot-db-backup="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json"
 alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed -ne '\''s/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p'\'' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json'
 # ngrok
