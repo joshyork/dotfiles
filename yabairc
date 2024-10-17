@@ -78,6 +78,7 @@ yabai -m rule --add app="^Cursor" space="3"
 ## Work Chat
 
 yabai -m rule --add app="^Slack" space="4"
+yabai -m rule --add app="^Webex" space="4"
 
 ## Personal Chat
 
