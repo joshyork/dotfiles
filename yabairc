@@ -54,15 +54,13 @@ yabai -m config normal_window_border_color 0x01000000
 
 # Window Desktop Placement
 
-## Browser / Email / Notes / Meetings
+## Browser / Email / Notes
 
 yabai -m rule --add app="^Arc" space="1"
 yabai -m rule --add app="^Google Chrome" space="1"
 yabai -m rule --add app="^Firefox" space="1"
 yabai -m rule --add app="^Notion" space="1"
 yabai -m rule --add app="^Obsidian" space="1"
-yabai -m rule --add app="^Zoom" space="1"
-yabai -m rule --add app="^Zoom Meeting" space="1"
 yabai -m rule --add app="^Microsoft Outlook" space="1"
 
 ## Terminal
@@ -78,14 +76,13 @@ yabai -m rule --add app="^Cursor" space="3"
 ## Work Chat
 
 yabai -m rule --add app="^Slack" space="4"
-yabai -m rule --add app="^Webex" space="4"
 
 ## Personal Chat
 
 yabai -m rule --add app="^Discord" space="5"
 yabai -m rule --add app="^Messages" space="5"
 
-## Todos/Productivity
+## Productivity
 
 yabai -m rule --add app="^Toggl Track" space="6"
 yabai -m rule --add app="^Harvest" space="6"
@@ -100,4 +97,10 @@ yabai -m rule --add app="^Redis Insight" space="7"
 yabai -m rule --add app="^Arctype" space="7"
 yabai -m rule --add app="^TablePlus" space="7"
 
+## Video Calls
+yabai -m rule --add app="^Webex" space="8"
+yabai -m rule --add app="^Zoom" space="8"
+yabai -m rule --add app="^Zoom Meeting" space="8"
+
+## Misc
 yabai -m rule --add app="licecap" manage=off

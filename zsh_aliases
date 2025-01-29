@@ -19,5 +19,3 @@ alias spur-bot-logs="kube-prod && kubectl get pods --namespace spur-bot | sed -n
 alias spur-bot-stage-logs="kube-stage && kubectl get pods --namespace spur-bot-stage | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot-stage -c spur-bot -f"
 alias incbot-db-backup="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json"
 alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed -ne '\''s/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p'\'' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json'
-# ngrok
-alias splunkgrok="ngrok http --domain=bold-grossly-terrapin.ngrok-free.app 3080"

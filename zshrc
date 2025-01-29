@@ -15,7 +15,6 @@ antigen bundle npm
 antigen bundle vi-mode
 antigen bundle git-extras
 antigen bundle agkozak/zsh-z
-# antigen bundle skywind3000/z.lua
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
