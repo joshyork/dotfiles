@@ -36,6 +36,7 @@ FORMULAE=(
     starship
     tig
     zsh
+    atuin
 )
 echo "START: Homebrew formulae"
 brew install ${FORMULAE[@]}
