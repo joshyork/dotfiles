@@ -35,3 +35,7 @@ eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
 # direnv
 eval "$(direnv hook zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
