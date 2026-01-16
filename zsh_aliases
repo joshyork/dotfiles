@@ -8,6 +8,7 @@ alias g=git
 alias git-whoami='echo "Current user: $(git config user.email)"'
 alias n=npm
 alias nr="npm run"
+alias pnr="pnpm run"
 alias ts="tig status"
 alias y=yarn
 # splunk k8s
