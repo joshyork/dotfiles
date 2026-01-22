@@ -23,34 +23,26 @@ brew update
 
 FORMULAE=(
     antigen
+    atuin
     awscli
     coreutils
     direnv
     fnm
-    jondot/tap/hygen
     jq
     koekeishiya/formulae/skhd
     koekeishiya/formulae/yabai
     rcm
-    redis
     starship
     tig
     zsh
-    atuin
 )
 echo "START: Homebrew formulae"
 brew install ${FORMULAE[@]}
 echo -e "END: Homebrew formulae\n"
 
 CASKS=(
-    iterm2,"Iterm 2"
-    1password,"1Password 7"
     google-chrome,"Google Chrome"
-    visual-studio-code,"Visual Studio Code"
-    todoist,"Todoist"
-    postman,"Postman"
     notion,"Notion"
-    keycastr,"KeyCastr"
     raycast,"Raycast"
     discord,"Discord"
     ngrok,"Ngrok"

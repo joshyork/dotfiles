@@ -4,11 +4,14 @@
     "Alacritty",
     "atuin",
     "atuinsh",
+    "awscli",
     "catppuccin",
     "christoomey",
+    "coreutils",
     "direnv",
     "ghcup",
     "iterm",
+    "koekeishiya",
     "lazypath",
     "lazyrepo",
     "lazyvim",
@@ -16,6 +19,7 @@
     "nvim",
     "Raycast",
     "rjhilgefort",
+    "skhd",
     "trackpad"
   ]
 }
