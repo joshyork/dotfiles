@@ -41,6 +41,7 @@ brew install ${FORMULAE[@]}
 echo -e "END: Homebrew formulae\n"
 
 CASKS=(
+    alacritty,"Alacritty"
     google-chrome,"Google Chrome"
     notion,"Notion"
     raycast,"Raycast"

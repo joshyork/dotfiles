@@ -47,17 +47,12 @@ Starship shell prompt preview:
 
 ### MacOS System Settings
 
-- Disable spotlight cmd+space
-- Set Raycast trigger to cmd+space
-- Import raycast settings from dropbox
 - Change trackpad direction
 
   `Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
-
 - Map Caps lock -> Escape
 
   `Settings > Keyboard > Modifier Keys`
-
 - Disable automatic sorting of spaces
 
   `Settings > Mission Control > Uncheck 'Automatically rearrange Spaces'`
@@ -65,6 +60,9 @@ Starship shell prompt preview:
 - Auto hide Dock
 
   `Settings > Desktop & Dock > check 'Automatically hide and show the Dock'`
+- Disable spotlight cmd+space
+- Set Raycast trigger to cmd+space
+- Import raycast settings from dropbox
 
 - Set default browser
 
