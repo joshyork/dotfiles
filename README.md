@@ -42,6 +42,7 @@ Starship shell prompt preview:
 - Allow press and hold for VSCode
 
   `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
+  `defaults write "$(osascript -e 'id of app "Cursor"')" ApplePressAndHoldEnabled -bool false && osascript -e 'quit app "Cursor"' && open -a "Cursor"`
 
 - Copy over `~/.zsh_secrets`, `~/.kube/config`, `~/.aws/credentials`, etc if necessary
 
