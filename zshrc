@@ -19,7 +19,6 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle rjhilgefort/history-search-multi-word
 antigen bundle atuinsh/atuin@main
 
 # Tell Antigen that you're done.
@@ -30,13 +29,17 @@ antigen apply
 [[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
 [[ -s "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
 
-# starship prompt
+# https://github.com/starship/starship/issues/3418#issuecomment-2477375663
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
 eval "$(starship init zsh)"
+
 # fast node manager
 eval "$(fnm env --use-on-cd)"
+
 # direnv
 eval "$(direnv hook zsh)"
-
-. "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
