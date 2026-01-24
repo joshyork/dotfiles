@@ -38,12 +38,6 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
   ```
 
 - [ ] [Install Ghostty](https://ghostty.org/download)
-- [ ] [Install Homebrew](https://brew.sh/)
-- [ ] Install Homebrew Formulae
-
-  ```sh
-  brew install $(cat packages.txt)
-  ```
 
 - [ ] [Install Cursor](https://cursor.com/download)
 - [ ] Generate SSH key & Add to Github
@@ -95,7 +89,14 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
   ```
 
 - `mkdir -p ~/code/personal && cd ~/code/personal`
-- [ ] clone this repo, double check `DOTFILES_DIRS` env var value in `rcrc`
+- [ ] clone this repo, cd to it, double check `DOTFILES_DIRS` env var value in `rcrc`
+- [ ] [Install Homebrew](https://brew.sh/)
+- [ ] Install Homebrew Formulae
+
+  ```sh
+  brew install $(cat brew.txt)
+  ```
+
 - [ ] `rcup -d $HOME/code/personal/dotfiles`
 - [ ] [Install Yabai](<https://github.com/asmvik/yabai/wiki/Installing-yabai-(latest-release)>)
 - Symlink Cursor files (once dropbox has finished syncing)
