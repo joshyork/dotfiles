@@ -10,3 +10,4 @@ skhd
 rcm
 starship
 zsh
+kubectl
