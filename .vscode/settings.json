@@ -9,7 +9,12 @@
     "christoomey",
     "coreutils",
     "direnv",
+    "easymotion",
+    "esbenp",
+    "foldfix",
     "ghcup",
+    "highlightedyank",
+    "Ignorecase",
     "iterm",
     "koekeishiya",
     "lazypath",
@@ -20,6 +25,8 @@
     "Raycast",
     "rjhilgefort",
     "skhd",
-    "trackpad"
+    "Smartcase",
+    "trackpad",
+    "vspacecode"
   ]
 }

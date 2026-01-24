@@ -1,2 +1,2 @@
 DOTFILES_DIRS="$HOME/code/personal/dotfiles"
-EXCLUDES="shell_prompt.png macos-setup.sh .gitignore cursor symlink-cursor-settings.sh"
+EXCLUDES=".gitignore brew.txt symlink-cursor-settings.sh"

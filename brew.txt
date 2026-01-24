@@ -1,0 +1,12 @@
+antigen
+atuin
+corepack
+coreutils
+direnv
+fnm
+jq
+yabai
+skhd
+rcm
+starship
+zsh
