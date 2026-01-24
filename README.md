@@ -14,9 +14,9 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
 
 - [ ] [Install Arc](https://arc.net/)
 
-- [ ] [Download 1Password](https://1password.com/downloads/mac)
+- [ ] [Install 1Password](https://1password.com/downloads/mac)
 
-- [ ] [Download Raycast](https://www.raycast.com/)
+- [ ] [Install Raycast](https://www.raycast.com/)
   - [ ] Disable Spotlight keyboard shortcuts: `System Preferences > Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
         Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
 
