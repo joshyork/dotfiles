@@ -104,4 +104,5 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
   . ~/code/personal/dotfiles/symlink-cursor-settings.sh
   ```
 
+- [ ] `atuin login`
 - [ ] [Install Raycast Bookmarks](https://github.com/joshyork/raycast-bookmarks)
