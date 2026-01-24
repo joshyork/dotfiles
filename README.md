@@ -16,7 +16,8 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
 
 - [ ] [Install 1Password](https://1password.com/downloads/mac)
 
-- [ ] [Install Raycast](https://www.raycast.com/)
+- [ ] [Download Raycast](https://www.raycast.com/)
+
   - [ ] Disable Spotlight keyboard shortcuts: `System Preferences > Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
         Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
 
@@ -38,11 +39,24 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
   ```
 
 - [ ] [Install Ghostty](https://ghostty.org/download)
+- [ ] [Install Homebrew](https://brew.sh/)
+- [ ] Install Monaspace fonts
+
+  ```sh
+  brew install --cask font-monaspace
+  ```
+
+- [ ] Install Homebrew Formulae
+
+  ```sh
+  brew install $(cat packages.txt)
+  ```
 
 - [ ] [Install Cursor](https://cursor.com/download)
 - [ ] Generate SSH key & Add to Github
 
   <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
+
   - [ ] Generate key
 
     ```sh
