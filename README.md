@@ -28,6 +28,7 @@ dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
 - [ ] `System Preferences > Dock & Desktop > Uncheck 'Automatically rearrange Spaces'`
 - [ ] `System Preferences > Trackpad > Uncheck 'Scroll Direction: Natural'`
 - [ ] `System Preferences > Keyboard > Modifier Keys > Map Caps lock -> Escape`
+- [ ] `System Preferences > Menu Bar > Clock Options > Display the time with seconds`
 - [ ] Allow press and hold in Cursor
 
   ```sh

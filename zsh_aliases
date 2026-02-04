@@ -12,7 +12,8 @@ alias g=git
 alias gwhoami='echo "Current user: $(git config user.email)"'
 alias n=npm
 alias nr="npm run"
-alias pnr="pnpm run"
+alias p="pnpm"
+alias pr="pnpm run"
 alias ts="tig status"
 alias y=yarn
 # splunk k8s
@@ -25,4 +26,4 @@ alias spur-bot-stage-logs="kube-stage && kubectl get pods --namespace spur-bot-s
 alias incbot-db-backup="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json"
 alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed -ne '\''s/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p'\'' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json'
 # ngrok
-alias webgrok="ngrok http 4000 --domain=desired-turtle-stable.ngrok-free.app"
+alias incgrok="ngrok http 3000 --domain=desired-turtle-stable.ngrok-free.app"
