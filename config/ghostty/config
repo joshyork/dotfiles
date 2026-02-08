@@ -1,2 +1,7 @@
 font-size = 16
-font-family = "Monaspace Neon"
+font-family = "MonaspiceAr Nerd Font"
+font-thicken = true
+
+# Let shell control tab titles (not Ghostty's auto-title)
+shell-integration-features = no-title
+window-decoration = false

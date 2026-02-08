@@ -1,0 +1,43 @@
+#!/bin/bash
+# macOS defaults for new machine setup
+# Run once, then log out/in for changes to take effect
+
+# Disable Ctrl+Arrow Mission Control shortcuts (frees them for Neovim window resize)
+# 79/80 = Move left/right a space, 81/82 = Mission Control / Application Windows
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '{ enabled = 0; value = { parameters = (65535, 123, 8650752); type = standard; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 80 '{ enabled = 0; value = { parameters = (65535, 123, 8781824); type = standard; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '{ enabled = 0; value = { parameters = (65535, 124, 8650752); type = standard; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 82 '{ enabled = 0; value = { parameters = (65535, 124, 8781824); type = standard; }; }'
+
+# Keyboard: fast key repeat and short delay
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Keyboard: disable press-and-hold for accented characters (enables key repeat everywhere)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Finder: show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Finder: show file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Dock: auto-hide
+defaults write com.apple.dock autohide -bool true
+
+# Dock: minimize effect
+defaults write com.apple.dock mineffect -string scale
+
+# Dock: don't show recent apps
+defaults write com.apple.dock show-recents -bool false
+
+# Trackpad: tap to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Screenshots: save to Downloads instead of Desktop
+defaults write com.apple.screencapture location -string "$HOME/Downloads"
+
+echo "Done. Log out and back in for all changes to take effect."

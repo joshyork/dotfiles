@@ -1,5 +1,5 @@
-if ! command -v docker &> /dev/null; then
-    alias docker=podman
+if command -v podman &>/dev/null && ! command -v docker &>/dev/null; then
+  sudo ln -s $(which podman) /usr/local/bin/docker
 fi
 
 alias d=docker
@@ -8,7 +8,12 @@ alias d-containers-remove-all='docker rm $(docker ps -a -q)'
 alias d-images-remove-all='docker rmi $(docker images -q)'
 alias d-volume-remove-all='docker volume rm $(docker volume ls -qf dangling=true)'
 d-exec() { docker exec -it $1 bash; }
+alias v=nvim
 alias g=git
+alias gwt='git worktree'
+alias gwta='git worktree add'
+alias gwtl='git worktree list'
+alias gwtr='git worktree remove'
 alias gwhoami='echo "Current user: $(git config user.email)"'
 alias n=npm
 alias nr="npm run"
@@ -19,6 +24,10 @@ alias y=yarn
 # splunk k8s
 alias kube-stage="kubectl config use-context cyclops-pdx10-play-payne.splunk8s.io"
 alias kube-prod="kubectl config use-context cyclops-pdx10-prod-goodall.splunk8s.io"
+alias k9s-stage="k9s --context cyclops-pdx10-play-payne.splunk8s.io"
+alias k9s-prod="k9s --context cyclops-pdx10-prod-goodall.splunk8s.io"
+alias k9s-v1-prod="k9s --context cyclops-pdx10-prod-goodall.splunk8s.io --namespace incident-response-bot"
+alias k9s-v1-stage="k9s --context cyclops-pdx10-play-payne.splunk8s.io --namespace incident-response-bot-test"
 alias incbot-logs="kubectl get pods --namespace incident-response-bot | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot -c incident-response-bot -f"
 alias incbot-test-logs="kubectl get pods --namespace incident-response-bot-test | sed -ne 's/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n incident-response-bot-test -c incident-response-bot -f"
 alias spur-bot-logs="kube-prod && kubectl get pods --namespace spur-bot | sed -ne 's/\(spur-bot-[0-9a-zA-Z-]*\).*/\1/p' | xargs -I{} kubectl logs {} -n spur-bot -c spur-bot -f"
@@ -27,3 +36,8 @@ alias incbot-db-backup="kubectl get pods --namespace incident-response-bot | sed
 alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed -ne '\''s/\(incident-response-bot-[0-9a-zA-Z-]*\).*/\1/p'\'' | xargs -I{} kubectl exec -n incident-response-bot {} -- cat /data/pseudoDatabase.json > fetchedDatabase.json && code fetchedDatabase.json'
 # ngrok
 alias incgrok="ngrok http 3000 --domain=desired-turtle-stable.ngrok-free.app"
+alias tmux-keys='tmux list-keys | fzf'
+
+# Set tab title to current folder name only
+title() { echo -ne "\033]0;${PWD##*/}\007" }
+precmd_functions+=(title)

@@ -1,0 +1,43 @@
+#!/bin/bash
+# Create Ghostty tabs for spur repos
+# Usage: spur-tabs
+
+SPLUNK_DIR="$HOME/code/splunk"
+
+osascript <<'EOF'
+tell application "Ghostty"
+  activate
+  delay 0.3
+end tell
+
+tell application "System Events"
+  tell process "Ghostty"
+    -- First tab: spur (use existing tab)
+    keystroke "cd ~/code/splunk/spur && echo -ne '\\033]0;spur\\007'"
+    key code 36
+
+    delay 0.3
+
+    -- Second tab: two-spur
+    keystroke "t" using command down
+    delay 0.3
+    keystroke "cd ~/code/splunk/two-spur && echo -ne '\\033]0;two-spur\\007'"
+    key code 36
+
+    delay 0.3
+
+    -- Third tab: three-spur
+    keystroke "t" using command down
+    delay 0.3
+    keystroke "cd ~/code/splunk/three-spur && echo -ne '\\033]0;three-spur\\007'"
+    key code 36
+
+    delay 0.3
+
+    -- Go back to first tab
+    keystroke "1" using command down
+  end tell
+end tell
+EOF
+
+echo "Created spur tabs in Ghostty"

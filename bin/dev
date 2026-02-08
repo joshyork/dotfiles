@@ -1,0 +1,40 @@
+#!/bin/bash
+# Usage: dev [path]
+# Opens a tmux session with a standard dev layout.
+# If already in the session, just switches to it.
+
+dir="${1:-.}"
+dir="$(cd "$dir" && pwd)"
+name="$(basename "$dir")"
+
+# If session exists, attach/switch to it
+if tmux has-session -t "$name" 2>/dev/null; then
+  if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$name"
+  else
+    tmux attach -t "$name"
+  fi
+  exit 0
+fi
+
+# Create session with first window
+tmux new-session -d -s "$name" -c "$dir" -n claude
+
+# Create remaining windows
+tmux new-window -t "$name" -n edit -c "$dir"
+tmux new-window -t "$name" -n shell -c "$dir"
+tmux new-window -t "$name" -n server -c "$dir"
+tmux new-window -t "$name" -n misc -c "$dir"
+
+# Start nvim in the edit window
+tmux send-keys -t "$name:edit" 'nvim .' Enter
+
+# Start on the claude window
+tmux select-window -t "$name:claude"
+
+# Attach
+if [ -n "$TMUX" ]; then
+  tmux switch-client -t "$name"
+else
+  tmux attach -t "$name"
+fi

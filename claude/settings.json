@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "WebSearch",
+      "WebFetch",
+      "Bash(ls *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(npm test *)",
+      "Edit(*)",
+      "Write(*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm --filter @repo/redis-next test:*)",
+      "Bash(pnpm --filter @repo/redis-next lint:*)",
+      "Bash(pnpm --filter @repo/redis-next typecheck:*)",
+      "Bash(pnpm --filter @repo/core-next typecheck:*)",
+      "Bash(pnpm --filter @repo/core-next test:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm --filter incbot-next typecheck:*)",
+      "Bash(pnpm --filter incbot-next lint:*)",
+      "Bash(pnpm --filter incbot-next build:*)",
+      "Bash(node:*)",
+      "Bash(docker build:*)",
+      "Bash(docker run:*)",
+      "Bash(pnpm why:*)",
+      "Bash(pnpm list:*)",
+      "Bash(DOCKER_BUILDKIT=1 docker build:*)",
+      "Bash(tree:*)",
+      "Bash(pnpm:*)",
+      "Bash(pnpm test:next:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(gh api:*)",
+      "Bash(npm view:*)",
+      "Bash(git -C /Users/josyork/code/splunk/spur status)",
+      "Bash(git -C /Users/josyork/code/splunk/spur log --oneline -10)",
+      "Bash(git -C /Users/josyork/code/splunk/spur add packages/redis-next/src/Redis/service.ts packages/redis-next/src/Cache/memoize.ts packages/redis-next/src/Cache/memoize.test.ts apps/incbot-next/src/services/SlackApi/index.ts apps/incbot-next/src/services/OktaApi.ts apps/incbot-next/src/services/AppServices.ts apps/incbot-next/src/services/AppConfig.ts apps/incbot-next/src/server/ServerLayer.ts apps/incbot-next/src/main.ts apps/incbot-next/src/commands/ping.ts apps/incbot-next/package.json CLAUDE.md)",
+      "Bash(git -C /Users/josyork/code/splunk/spur add apps/incbot-next/src/authorization/constants.ts apps/incbot-next/src/authorization/resolve.ts apps/incbot-next/src/authorization/resolve.test.ts apps/incbot-next/src/services/AuthCtx.ts apps/incbot-next/src/services/AuthCtx.test.ts apps/incbot-next/src/commands/user.ts apps/incbot-next/src/commands/test.ts apps/incbot-next/src/commands/index.ts apps/incbot-next/src/commands/help.ts apps/incbot-next/src/commands/help.test.ts apps/incbot-next/src/commands/router.ts apps/incbot-next/src/guards/feedback.ts apps/incbot-next/src/guards/feedback.test.ts docs/architecture/decisions/012-database-orm-selection.md)",
+      "Bash(fnm use:*)",
+      "Bash(docker exec:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(npx dprint fmt:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./secrets/**)",
+      "Bash(rm -rf *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(npm install *)"
+    ],
+    "defaultMode": "default"
+  },
+  "enabledPlugins": {
+    "gitlab-skills@skills-marketplace": true,
+    "artifactory-skills@skills-marketplace": true,
+    "jira-skills@skills-marketplace": true
+  }
+}

@@ -1,124 +1,143 @@
 # Dotfiles
 
-dotfiles managed by [rcm](https://github.com/thoughtbot/rcm)
+Managed by [rcm](https://github.com/thoughtbot/rcm).
 
 ## New Machine Setup
 
-- [ ] Install xcode cli tools
+### 1. Xcode CLI Tools
 
-  ```sh
-  xcode-select --install
-  ```
+```sh
+xcode-select --install
+```
 
-- [ ] [Install Dropbox](https://www.dropbox.com/install)
+### 2. Core Apps (manual installs)
 
-- [ ] [Install Arc](https://arc.net/)
+Install these first — they don't depend on anything else:
 
-- [ ] [Install 1Password](https://1password.com/downloads/mac)
+- [1Password](https://1password.com/downloads/mac)
+- [Arc](https://arc.net/)
+- [Ghostty](https://ghostty.org/download)
+- [Raycast](https://www.raycast.com/)
+- [Dropbox](https://www.dropbox.com/install)
+- [Cursor](https://cursor.com/download)
 
-- [ ] [Download Raycast](https://www.raycast.com/)
+Set Arc as default browser: `System Settings > Desktop & Dock > Default web browser > Arc`
 
-  - [ ] Disable Spotlight keyboard shortcuts: `System Preferences > Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
-        Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
+### 3. Raycast
 
-  - [ ] Update Raycast trigger to cmd+space
+- Disable Spotlight: `System Settings > Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
+- Open Raycast, set trigger to `Cmd+Space`
+- [Install Raycast Bookmarks](https://github.com/joshyork/raycast-bookmarks)
 
-- [ ] `Settings > Dock & Desktop > check 'Automatically hide and show the Dock'`
-- [ ] `System Preferences > Dock & Desktop > Default web browser > Arc`
-- [ ] `System Preferences > Dock & Desktop > Uncheck 'Automatically rearrange Spaces'`
-- [ ] `System Preferences > Trackpad > Uncheck 'Scroll Direction: Natural'`
-- [ ] `System Preferences > Keyboard > Modifier Keys > Map Caps lock -> Escape`
-- [ ] `System Preferences > Menu Bar > Clock Options > Display the time with seconds`
-- [ ] Allow press and hold in Cursor
+### 4. Homebrew
 
-  ```sh
-  # Cursor
-  defaults write "$(osascript -e 'id of app "Cursor"')" ApplePressAndHoldEnabled -bool false && osascript -e 'quit app "Cursor"
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-  # VSCode
-  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-  ```
+### 5. SSH Key & GitHub
 
-- [ ] [Install Ghostty](https://ghostty.org/download)
-- [ ] [Install Homebrew](https://brew.sh/)
-- [ ] Install Monaspace fonts
+```sh
+ssh-keygen -t ed25519 -C "joshua.s.york@gmail.com"
+eval "$(ssh-agent -s)"
+```
 
-  ```sh
-  brew install --cask font-monaspace
-  ```
+Create/update `~/.ssh/config`:
 
-- [ ] Install Homebrew Formulae
+```
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
 
-  ```sh
-  brew install $(cat packages.txt)
-  ```
+```sh
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+pbcopy < ~/.ssh/id_ed25519.pub
+```
 
-- [ ] [Install Cursor](https://cursor.com/download)
-- [ ] Generate SSH key & Add to Github
+[Add pub key to GitHub](https://github.com/settings/keys)
 
-  <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
+### 6. Clone & Install Dotfiles
 
-  - [ ] Generate key
+```sh
+mkdir -p ~/code/personal && cd ~/code/personal
+git clone git@github.com:joshyork/dotfiles.git
+cd dotfiles
+```
 
-    ```sh
-    ssh-keygen -t ed25519 -C "joshua.s.york@gmail.com"
-    ```
+Install everything (formulae, casks, fonts):
 
-  - [ ] Start the ssh-agent in the background.
+```sh
+brew bundle
+```
 
-    ```sh
-    eval "$(ssh-agent -s)"
-    ```
+Symlink dotfiles:
 
-  - [ ] Check if ssh config exists
+```sh
+rcup -d ~/code/personal/dotfiles
+```
 
-    ```sh
-    open ~/.ssh/config
-    ```
+### 7. macOS Defaults
 
-    - create it if it doesn't
+```sh
+macos-defaults
+```
 
-      ```sh
-      touch ~/.ssh/config
-      ```
+This disables Ctrl+Arrow Mission Control shortcuts, sets fast key repeat, shows hidden files in Finder, auto-hides the dock, and more. Log out/in after running.
 
-  - [ ] update ssh config contents
+### 8. Remaining Manual Settings
 
-    ```txt
-    Host *
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/id_ed25519
-    ```
+- `System Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
+- `System Settings > Desktop & Dock > Uncheck 'Automatically rearrange Spaces'`
+- `System Settings > Menu Bar > Clock Options > Display the time with seconds`
 
-    ```sh
-    vim ~/.ssh/config
-    ```
+### 9. Shell
 
-- [ ] Add private key to ssh-agent
-  - `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
-- [ ] [Add pub key to Github](https://github.com/settings/keys)
+Open a new Ghostty window — starship, atuin, and all shell config should load automatically from the symlinked dotfiles.
 
-  ```sh
-  pbcopy < ~/.ssh/id_ed25519.pub
-  ```
+```sh
+atuin login
+```
 
-- `mkdir -p ~/code/personal && cd ~/code/personal`
-- [ ] clone this repo, cd to it, double check `DOTFILES_DIRS` env var value in `rcrc`
-- [ ] [Install Homebrew](https://brew.sh/)
-- [ ] Install Homebrew Formulae
+### 10. Yabai
 
-  ```sh
-  brew install $(cat brew.txt)
-  ```
+[Install Yabai](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release))
 
-- [ ] `rcup -d $HOME/code/personal/dotfiles`
-- [ ] [Install Yabai](<https://github.com/asmvik/yabai/wiki/Installing-yabai-(latest-release)>)
-- Symlink Cursor files (once dropbox has finished syncing)
+### 11. Cursor / VS Code (after Dropbox sync)
 
-  ```sh
-  . ~/code/personal/dotfiles/symlink-cursor-settings.sh
-  ```
+```sh
+. ~/code/personal/dotfiles/symlink-cursor-settings.sh
+```
 
-- [ ] `atuin login`
-- [ ] [Install Raycast Bookmarks](https://github.com/joshyork/raycast-bookmarks)
+### 12. Neovim
+
+Open `nvim` — lazy.nvim will auto-install all plugins on first launch. Mason will install LSP servers and formatters.
+
+For TypeScript projects, install TypeScript globally so the LSP works everywhere:
+
+```sh
+npm install -g typescript
+```
+
+## What's Included
+
+| Config | Location | Notes |
+|--------|----------|-------|
+| Zsh | `zshrc`, `zsh_aliases`, `zsh_env` | Antigen, starship prompt, atuin history |
+| Neovim | `config/nvim/` | Kickstart-based, lazy.nvim, LSP, treesitter |
+| Tmux | `config/tmux/` | `C-a` prefix, vim-style nav, session switcher |
+| Ghostty | `config/ghostty/` | Monaspace font, theme |
+| Karabiner | `config/karabiner/` | Caps Lock → Ctrl (hold) / Escape (tap) |
+| Git | `gitconfig`, `gitconfig-personal`, `gitconfig-splunk` | Conditional includes by directory |
+| Yabai | `yabairc` | Tiling window manager |
+| skhd | `skhdrc` | Yabai keyboard shortcuts |
+| k9s | `config/k9s/` | Kubernetes TUI |
+
+## Scripts (`~/bin`)
+
+| Script | Usage |
+|--------|-------|
+| `dev [path]` | Opens a tmux session with claude/edit/shell/server/misc windows |
+| `macos-defaults` | Applies macOS system defaults for new machines |
+| `spur-tabs` | Opens browser tabs for spur dev workflow |

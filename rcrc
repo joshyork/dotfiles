@@ -1,2 +1,3 @@
 DOTFILES_DIRS="$HOME/code/personal/dotfiles"
-EXCLUDES=".gitignore brew.txt symlink-cursor-settings.sh"
+EXCLUDES=".gitignore brew.txt Brewfile symlink-cursor-settings.sh"
+UNDOTTED="bin"

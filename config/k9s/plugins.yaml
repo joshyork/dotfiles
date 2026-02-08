@@ -1,0 +1,12 @@
+plugins:
+  # Select pod → Enter to see containers → Shift-J on container
+  json-logs:
+    shortCut: Shift-J
+    description: "JSON pretty print logs"
+    scopes:
+      - containers
+    command: bash
+    background: false
+    args:
+      - -c
+      - "kubectl logs -n $NAMESPACE $POD -c $NAME -f --tail=100 | jq -R 'try fromjson catch {raw: .}'"

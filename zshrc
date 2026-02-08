@@ -42,4 +42,8 @@ eval "$(fnm env --use-on-cd)"
 # direnv
 eval "$(direnv hook zsh)"
 
+# fzf - fuzzy finder shell integration (keybindings + completions)
+source <(fzf --zsh)
+
+# atuin - must be after fzf so it wins the C-r binding
 eval "$(atuin init zsh)"
