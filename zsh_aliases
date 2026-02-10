@@ -24,7 +24,7 @@ alias y=yarn
 # splunk k8s
 alias kube-stage="kubectl config use-context cyclops-pdx10-play-payne.splunk8s.io"
 alias kube-prod="kubectl config use-context cyclops-pdx10-prod-goodall.splunk8s.io"
-alias k9s-stage="k9s --context cyclops-pdx10-play-payne.splunk8s.io"
+alias k9s-stage="k9s --context cyclops-pdx10-play-payne.splunk8s.io --namespace spur-bot-stage --command pod"
 alias k9s-prod="k9s --context cyclops-pdx10-prod-goodall.splunk8s.io"
 alias k9s-v1-prod="k9s --context cyclops-pdx10-prod-goodall.splunk8s.io --namespace incident-response-bot"
 alias k9s-v1-stage="k9s --context cyclops-pdx10-play-payne.splunk8s.io --namespace incident-response-bot-test"

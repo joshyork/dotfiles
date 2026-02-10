@@ -18,6 +18,11 @@ return {
 
     telescope.setup({
       defaults = {
+        mappings = {
+          i = {
+            ['<Esc>'] = require('telescope.actions').close,
+          },
+        },
         file_ignore_patterns = { 'node_modules', '.git/', 'dist/', 'build/' },
         layout_strategy = 'vertical',
         layout_config = {

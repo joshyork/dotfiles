@@ -24,12 +24,16 @@ return {
       use_libuv_file_watcher = true,
     },
     window = {
-      width = 35,
+      width = 'fit_content',
       mappings = {
         ['<space>'] = 'none', -- don't conflict with leader
       },
     },
     default_component_configs = {
+      file_size = { enabled = false },
+      type = { enabled = false },
+      last_modified = { enabled = false },
+      created = { enabled = false },
       icon = {
         folder_closed = '',
         folder_open = '',

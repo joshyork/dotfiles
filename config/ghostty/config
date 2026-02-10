@@ -5,3 +5,6 @@ font-thicken = true
 # Let shell control tab titles (not Ghostty's auto-title)
 shell-integration-features = no-title
 window-decoration = false
+
+# Eliminate gap below tmux status bar
+window-padding-y = 0

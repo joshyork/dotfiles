@@ -1,7 +1,17 @@
 #!/bin/bash
-# Usage: dev [path]
+# Usage: dev [--apogee] [path]
 # Opens a tmux session with a standard dev layout.
 # If already in the session, just switches to it.
+#
+# Layouts:
+#   default:  claude | edit | shell | server | misc
+#   --apogee: claude | edit | local-dev (server|db split) | k9s
+
+layout="default"
+if [ "$1" = "--apogee" ]; then
+  layout="apogee"
+  shift
+fi
 
 dir="${1:-.}"
 dir="$(cd "$dir" && pwd)"
@@ -22,12 +32,21 @@ tmux new-session -d -s "$name" -c "$dir" -n claude
 
 # Create remaining windows
 tmux new-window -t "$name" -n edit -c "$dir"
-tmux new-window -t "$name" -n shell -c "$dir"
-tmux new-window -t "$name" -n server -c "$dir"
-tmux new-window -t "$name" -n misc -c "$dir"
 
-# Start nvim in the edit window
-tmux send-keys -t "$name:edit" 'nvim .' Enter
+if [ "$layout" = "apogee" ]; then
+  tmux new-window -t "$name" -n local-dev -c "$dir"
+  tmux split-window -t "$name:local-dev" -h -c "$dir"
+  tmux select-pane -t "$name:local-dev.0"
+  tmux new-window -t "$name" -n k9s -c "$dir"
+else
+  tmux new-window -t "$name" -n shell -c "$dir"
+  tmux new-window -t "$name" -n server -c "$dir"
+  tmux new-window -t "$name" -n misc -c "$dir"
+fi
+
+# Auto-start apps
+tmux send-keys -t "$name:claude" 'claude --continue' Enter
+tmux send-keys -t "$name:edit" 'v .' Enter
 
 # Start on the claude window
 tmux select-window -t "$name:claude"

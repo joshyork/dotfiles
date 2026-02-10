@@ -54,6 +54,17 @@ return {
     opts = {},
   },
 
+  -- Scrollbar with diagnostics, search, and git indicators
+  {
+    'petertriho/nvim-scrollbar',
+    event = 'BufReadPost',
+    dependencies = { 'lewis6991/gitsigns.nvim' },
+    config = function()
+      require('scrollbar').setup()
+      require('scrollbar.handlers.gitsigns').setup()
+    end,
+  },
+
   -- Todo comments
   {
     'folke/todo-comments.nvim',

@@ -13,6 +13,7 @@ return {
     keymap = {
       preset = 'default',
       ['<C-y>'] = { 'select_and_accept' },
+      ['<CR>'] = { 'accept', 'fallback' },
     },
     appearance = {
       nerd_font_variant = 'mono',
