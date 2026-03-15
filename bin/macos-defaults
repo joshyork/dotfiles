@@ -40,4 +40,7 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # Screenshots: save to Downloads instead of Desktop
 defaults write com.apple.screencapture location -string "$HOME/Downloads"
 
+# AeroSpace Mission Control fix
+defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+
 echo "Done. Log out and back in for all changes to take effect."

@@ -60,6 +60,7 @@
   "enabledPlugins": {
     "gitlab-skills@skills-marketplace": true,
     "artifactory-skills@skills-marketplace": true,
-    "jira-skills@skills-marketplace": true
+    "jira-skills@skills-marketplace": true,
+    "commit-commands@claude-plugins-official": true
   }
 }

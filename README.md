@@ -100,17 +100,13 @@ Open a new Ghostty window — starship, atuin, and all shell config should load 
 atuin login
 ```
 
-### 10. Yabai
-
-[Install Yabai](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release))
-
-### 11. Cursor / VS Code (after Dropbox sync)
+### 10. Cursor / VS Code (after Dropbox sync)
 
 ```sh
 . ~/code/personal/dotfiles/symlink-cursor-settings.sh
 ```
 
-### 12. Neovim
+### 11. Neovim
 
 Open `nvim` — lazy.nvim will auto-install all plugins on first launch. Mason will install LSP servers and formatters.
 
@@ -130,8 +126,7 @@ npm install -g typescript
 | Ghostty | `config/ghostty/` | Monaspace font, theme |
 | Karabiner | `config/karabiner/` | Caps Lock → Ctrl (hold) / Escape (tap) |
 | Git | `gitconfig`, `gitconfig-personal`, `gitconfig-splunk` | Conditional includes by directory |
-| Yabai | `yabairc` | Tiling window manager |
-| skhd | `skhdrc` | Yabai keyboard shortcuts |
+| AeroSpace | `config/aerospace/` | Tiling window manager with workspace rules |
 | k9s | `config/k9s/` | Kubernetes TUI |
 
 ## Scripts (`~/bin`)

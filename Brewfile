@@ -14,10 +14,9 @@ brew "neovim"
 brew "rcm"
 brew "ripgrep"
 brew "starship"
-brew "jackielii/tap/skhd-zig"
 brew "tig"
 brew "tmux"
-brew "yabai"
+brew "FelixKratz/formulae/borders"
 brew "zsh"
 
 # Casks
@@ -28,3 +27,5 @@ cask "raycast"
 cask "1password"
 cask "arc"
 cask "dropbox"
+cask "nikitabobko/tap/aerospace"
+
