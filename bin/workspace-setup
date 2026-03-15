@@ -1,0 +1,42 @@
+#!/bin/zsh
+# Launch essential workspace apps (if not already running) and reassign windows.
+
+AEROSPACE_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/aerospace"
+
+log() { echo "[workspace-setup] $1" }
+
+# bundle-id -> app name mapping
+typeset -A APPS
+APPS=(
+    com.mitchellh.ghostty       "Ghostty"
+    net.imput.helium            "Helium"
+    com.tinyspeck.slackmacgap   "Slack"
+    com.hnc.Discord             "Discord"
+    notion.id                   "Notion"
+    com.TablePro                "TablePro"
+    com.usebruno.app            "Bruno"
+    Cisco-Systems.Spark         "Webex"
+)
+
+launched=0
+for bundle_id app_name in "${(@kv)APPS}"; do
+    if ! pgrep -f "$bundle_id" >/dev/null 2>&1; then
+        log "Launching $app_name..."
+        open -a "$app_name"
+        launched=$((launched + 1))
+    else
+        log "$app_name already running"
+    fi
+done
+
+# Give newly launched apps time to register windows
+if (( launched > 0 )); then
+    log "Waiting for $launched app(s) to register windows..."
+    sleep 3
+else
+    log "All apps already running"
+fi
+
+log "Reassigning windows to workspaces..."
+"$AEROSPACE_DIR/reassign-windows.sh"
+log "Done"

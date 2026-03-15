@@ -8,7 +8,8 @@ config-version = 2
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xff58a6ff inactive_color=0x00000000 width=10.0'
+    'exec-and-forget borders active_color=0xff58a6ff inactive_color=0x00000000 width=10.0',
+    'exec-and-forget ~/bin/workspace-setup'
 ]
 
 # Start AeroSpace at login
@@ -114,6 +115,7 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
+    alt-period = 'layout tiles accordion'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
@@ -222,13 +224,13 @@ on-mode-changed = []
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
-# Code
+# Editor
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace E'
 [[on-window-detected]]
 if.app-name-regex-substring = 'Cursor'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace E'
 
 # Terminal
 [[on-window-detected]]
@@ -260,10 +262,10 @@ run = 'move-node-to-workspace D'
 if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace D'
 
-# Slack
+# Comms
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace C'
 
 # Messages
 [[on-window-detected]]
@@ -278,10 +280,13 @@ run = 'move-node-to-workspace M'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace N'
 
-# Video
+# Webex main app -> comms workspace
 [[on-window-detected]]
-if.app-id = 'com.cisco.webexmeetingsapp'
-run = 'move-node-to-workspace V'
+if.app-id = 'Cisco-Systems.Spark'
+if.window-title-regex-substring = '^Webex$'
+run = ['layout tiling', 'move-node-to-workspace C']
+
+# Webex call/breakout windows -> notes workspace (alongside Notion)
 [[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace V'
+if.app-id = 'Cisco-Systems.Spark'
+run = ['layout tiling', 'move-node-to-workspace N']

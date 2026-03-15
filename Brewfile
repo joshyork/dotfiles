@@ -28,7 +28,7 @@ cask "1password"
 cask "arc"
 cask "cursor"
 cask "dropbox"
-cask "helium"
+cask "helium-browser"
 cask "nikitabobko/tap/aerospace"
 cask "tablepro"
 

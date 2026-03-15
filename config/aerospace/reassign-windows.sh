@@ -1,7 +1,10 @@
 #!/bin/zsh
 # Reads on-window-detected rules from aerospace.toml and re-applies them to all open windows.
 
+log() { echo "[reassign-windows] $1" }
+
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/aerospace/aerospace.toml"
+log "Parsing rules from $CONFIG"
 
 # Parse config into parallel arrays: bundle ID/regex -> workspace
 APP_IDS=()
@@ -32,6 +35,8 @@ while IFS= read -r line; do
     fi
   fi
 done < "$CONFIG"
+
+log "Found ${#APP_IDS[@]} app-id rules and ${#APP_REGEXES[@]} regex rules"
 
 # Build app-name -> bundle-id mapping
 typeset -A NAME_TO_BUNDLE
@@ -65,6 +70,10 @@ aerospace list-windows --all --json | jq -r '.[] | "\(.["window-id"])\t\(.["app-
   fi
 
   if [[ -n "$ws" ]]; then
-    aerospace move-node-to-workspace --window-id "$id" "$ws"
+    if aerospace move-node-to-workspace --fail-if-noop --window-id "$id" "$ws" 2>/dev/null; then
+      log "Moved $app_name (window $id) -> workspace $ws"
+    fi
   fi
 done
+
+log "Done"
