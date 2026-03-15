@@ -40,6 +40,18 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # Screenshots: save to Downloads instead of Desktop
 defaults write com.apple.screencapture location -string "$HOME/Downloads"
 
+# Spotlight: disable shortcut (replaced by Raycast)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '{ enabled = 0; value = { parameters = (32, 49, 1048576); type = standard; }; }'
+
+# Trackpad: disable natural scroll direction
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Dock: don't automatically rearrange Spaces
+defaults write com.apple.dock mru-spaces -bool false
+
+# Menu bar: show seconds in clock
+defaults write com.apple.menuextra.clock ShowSeconds -bool true
+
 # AeroSpace Mission Control fix
 defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 

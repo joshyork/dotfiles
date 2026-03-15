@@ -1,17 +1,7 @@
 #!/bin/bash
-# Usage: dev [--apogee] [path]
-# Opens a tmux session with a standard dev layout.
-# If already in the session, just switches to it.
-#
-# Layouts:
-#   default:  claude | edit | shell | server | misc
-#   --apogee: claude | edit | local-dev (server|db split) | k9s
-
-layout="default"
-if [ "$1" = "--apogee" ]; then
-  layout="apogee"
-  shift
-fi
+# Usage: dev [path]
+# Creates or attaches to a tmux session named after the folder.
+# Special layouts per project; default layout otherwise.
 
 dir="${1:-.}"
 dir="$(cd "$dir" && pwd)"
@@ -28,28 +18,22 @@ if tmux has-session -t "$name" 2>/dev/null; then
 fi
 
 # Create session with first window
-tmux new-session -d -s "$name" -c "$dir" -n claude
+tmux new-session -d -s "$name" -c "$dir"
 
-# Create remaining windows
-tmux new-window -t "$name" -n edit -c "$dir"
+# Project-specific layouts
+case "$name" in
+  spur)
+    tmux rename-window -t "$name:1" server
+    tmux new-window -t "$name" -n ngrok -c "$dir"
+    tmux new-window -t "$name" -n shell -c "$dir"
+    ;;
+  *)
+    tmux rename-window -t "$name:1" shell
+    ;;
+esac
 
-if [ "$layout" = "apogee" ]; then
-  tmux new-window -t "$name" -n local-dev -c "$dir"
-  tmux split-window -t "$name:local-dev" -h -c "$dir"
-  tmux select-pane -t "$name:local-dev.0"
-  tmux new-window -t "$name" -n k9s -c "$dir"
-else
-  tmux new-window -t "$name" -n shell -c "$dir"
-  tmux new-window -t "$name" -n server -c "$dir"
-  tmux new-window -t "$name" -n misc -c "$dir"
-fi
-
-# Auto-start apps
-tmux send-keys -t "$name:claude" 'claude --continue' Enter
-tmux send-keys -t "$name:edit" 'v .' Enter
-
-# Start on the claude window
-tmux select-window -t "$name:claude"
+# Start on the first window
+tmux select-window -t "$name:1"
 
 # Attach
 if [ -n "$TMUX" ]; then

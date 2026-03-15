@@ -10,39 +10,22 @@ Managed by [rcm](https://github.com/thoughtbot/rcm).
 xcode-select --install
 ```
 
-### 2. Core Apps (manual installs)
-
-Install these first — they don't depend on anything else:
-
-- [1Password](https://1password.com/downloads/mac)
-- [Arc](https://arc.net/)
-- [Ghostty](https://ghostty.org/download)
-- [Raycast](https://www.raycast.com/)
-- [Dropbox](https://www.dropbox.com/install)
-- [Cursor](https://cursor.com/download)
-
-Set Arc as default browser: `System Settings > Desktop & Dock > Default web browser > Arc`
-
-### 3. Raycast
-
-- Disable Spotlight: `System Settings > Keyboard > Keyboard Shortcuts > Spotlight > uncheck all`
-- Open Raycast, set trigger to `Cmd+Space`
-- [Install Raycast Bookmarks](https://github.com/joshyork/raycast-bookmarks)
-
-### 4. Homebrew
+### 2. Homebrew
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 5. SSH Key & GitHub
+### 3. SSH Key & GitHub
+
+Generate a new key and start the agent:
 
 ```sh
 ssh-keygen -t ed25519 -C "joshua.s.york@gmail.com"
 eval "$(ssh-agent -s)"
 ```
 
-Create/update `~/.ssh/config`:
+Create `~/.ssh/config` so the key is automatically loaded and stored in Keychain:
 
 ```
 Host *
@@ -51,19 +34,19 @@ Host *
   IdentityFile ~/.ssh/id_ed25519
 ```
 
+Add the key to the agent and copy the public key to clipboard:
+
 ```sh
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
-[Add pub key to GitHub](https://github.com/settings/keys)
+Paste it at [GitHub SSH Keys](https://github.com/settings/keys).
 
-### 6. Clone & Install Dotfiles
+### 4. Clone & Install Dotfiles
 
 ```sh
-mkdir -p ~/code/personal && cd ~/code/personal
-git clone git@github.com:joshyork/dotfiles.git
-cd dotfiles
+git clone git@github.com:joshyork/dotfiles.git ~/code/personal/dotfiles && cd ~/code/personal/dotfiles
 ```
 
 Install everything (formulae, casks, fonts):
@@ -78,21 +61,20 @@ Symlink dotfiles:
 rcup -d ~/code/personal/dotfiles
 ```
 
-### 7. macOS Defaults
+### 5. macOS Defaults
 
 ```sh
-macos-defaults
+~/bin/macos-defaults
 ```
 
 This disables Ctrl+Arrow Mission Control shortcuts, sets fast key repeat, shows hidden files in Finder, auto-hides the dock, and more. Log out/in after running.
 
-### 8. Remaining Manual Settings
+### 6. Raycast
 
-- `System Settings > Trackpad > Uncheck 'Scroll Direction: Natural'`
-- `System Settings > Desktop & Dock > Uncheck 'Automatically rearrange Spaces'`
-- `System Settings > Menu Bar > Clock Options > Display the time with seconds`
+- Open Raycast, set trigger to `Cmd+Space` (Spotlight shortcut already disabled by `macos-defaults`)
+- [Install Raycast Bookmarks](https://github.com/joshyork/raycast-bookmarks)
 
-### 9. Shell
+### 7. Shell
 
 Open a new Ghostty window — starship, atuin, and all shell config should load automatically from the symlinked dotfiles.
 
@@ -100,13 +82,13 @@ Open a new Ghostty window — starship, atuin, and all shell config should load 
 atuin login
 ```
 
-### 10. Cursor / VS Code (after Dropbox sync)
+### 8. Cursor / VS Code (after Dropbox sync)
 
 ```sh
-. ~/code/personal/dotfiles/symlink-cursor-settings.sh
+symlink-cursor-settings
 ```
 
-### 11. Neovim
+### 9. Neovim
 
 Open `nvim` — lazy.nvim will auto-install all plugins on first launch. Mason will install LSP servers and formatters.
 
@@ -115,24 +97,3 @@ For TypeScript projects, install TypeScript globally so the LSP works everywhere
 ```sh
 npm install -g typescript
 ```
-
-## What's Included
-
-| Config | Location | Notes |
-|--------|----------|-------|
-| Zsh | `zshrc`, `zsh_aliases`, `zsh_env` | Antigen, starship prompt, atuin history |
-| Neovim | `config/nvim/` | Kickstart-based, lazy.nvim, LSP, treesitter |
-| Tmux | `config/tmux/` | `C-a` prefix, vim-style nav, session switcher |
-| Ghostty | `config/ghostty/` | Monaspace font, theme |
-| Karabiner | `config/karabiner/` | Caps Lock → Ctrl (hold) / Escape (tap) |
-| Git | `gitconfig`, `gitconfig-personal`, `gitconfig-splunk` | Conditional includes by directory |
-| AeroSpace | `config/aerospace/` | Tiling window manager with workspace rules |
-| k9s | `config/k9s/` | Kubernetes TUI |
-
-## Scripts (`~/bin`)
-
-| Script | Usage |
-|--------|-------|
-| `dev [path]` | Opens a tmux session with claude/edit/shell/server/misc windows |
-| `macos-defaults` | Applies macOS system defaults for new machines |
-| `spur-tabs` | Opens browser tabs for spur dev workflow |

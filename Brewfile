@@ -26,6 +26,8 @@ cask "karabiner-elements"
 cask "raycast"
 cask "1password"
 cask "arc"
+cask "cursor"
 cask "dropbox"
+cask "helium"
 cask "nikitabobko/tap/aerospace"
 
