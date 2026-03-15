@@ -30,4 +30,5 @@ cask "cursor"
 cask "dropbox"
 cask "helium"
 cask "nikitabobko/tap/aerospace"
+cask "tablepro"
 

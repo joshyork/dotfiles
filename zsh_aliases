@@ -38,7 +38,7 @@ alias incbot-db-backup='kubectl get pods --namespace incident-response-bot | sed
 alias incgrok="ngrok http 3000 --domain=desired-turtle-stable.ngrok-free.app"
 alias tmux-keys='tmux list-keys | fzf'
 # splunk claude
-alias claude-login='claude-login -m Claude-Opus-4.6 > ~/.cl'
+alias cl='claude-login -m Claude-Opus-4.6 > ~/.cl'
 alias claude='source ~/.cl && claude'
 
 

@@ -251,6 +251,9 @@ run = 'move-node-to-workspace B'
 if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace D'
 [[on-window-detected]]
+if.app-id = 'com.TablePro'
+run = 'move-node-to-workspace D'
+[[on-window-detected]]
 if.app-id = 'com.usebruno.app'
 run = 'move-node-to-workspace D'
 [[on-window-detected]]

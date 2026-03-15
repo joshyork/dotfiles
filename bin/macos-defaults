@@ -52,6 +52,14 @@ defaults write com.apple.dock mru-spaces -bool false
 # Menu bar: show seconds in clock
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
 
+# Disable "Switch to Desktop N" shortcuts (frees alt+number for AeroSpace)
+for id in 118 119 120 121 122 123 124 125 126; do
+    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add $id '{ enabled = 0; value = { parameters = (65535, 18, 262144); type = standard; }; }'
+done
+
+# Keyboard: disable Option key as compose key (frees alt+t etc. for AeroSpace)
+defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled -bool false
+
 # AeroSpace Mission Control fix
 defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 

@@ -1,5 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
   "permissions": {
     "allow": [
       "Read",
@@ -19,21 +24,14 @@
       "Bash(git add:*)",
       "Bash(git ls-tree:*)"
     ],
+    "ask": ["Bash(git commit *)"],
+    "defaultMode": "default",
     "deny": [
       "Read(./.env.local)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
       "Bash(rm -rf *)"
-    ],
-    "ask": [
-      "Bash(git commit *)"
-    ],
-    "defaultMode": "default"
-  },
-  "enabledPlugins": {
-    "claude-md-management@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true
+    ]
   },
   "skipWebFetchPreflight": true
 }
