@@ -5,6 +5,6 @@ export YVM_DIR=$HOME/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/Library/Python/3.9/bin:$HOME/.local/bin:$HOME/.ghcup/bin:/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:/opt/podman/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/Library/Python/3.9/bin:$HOME/.local/bin:$HOME/.ghcup/bin:/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:/opt/podman/bin:/Applications/Splunk/bin
 export XDG_CONFIG_HOME=$HOME/.config
 export HOMEBREW_BUNDLE_FILE=$HOME/code/personal/dotfiles/Brewfile

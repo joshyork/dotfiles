@@ -51,4 +51,14 @@ return {
     'tpope/vim-fugitive',
     cmd = { 'Git', 'G', 'Gstatus', 'Gdiff', 'Gblame' },
   },
+  {
+    'sindrets/diffview.nvim',
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    keys = {
+      { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = 'Diff view (working tree)' },
+      { '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', desc = 'File history (current)' },
+      { '<leader>gH', '<cmd>DiffviewFileHistory<CR>', desc = 'File history (all)' },
+    },
+    opts = {},
+  },
 }

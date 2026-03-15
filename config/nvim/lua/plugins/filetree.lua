@@ -12,7 +12,7 @@ return {
     { '<leader>ec', '<cmd>Neotree toggle<CR>', desc = 'Toggle explorer' },
   },
   opts = {
-    hijack_netrw_behavior = 'open_current',
+    hijack_netrw_behavior = 'open_default',
     filesystem = {
       filtered_items = {
         visible = true,
@@ -24,7 +24,8 @@ return {
       use_libuv_file_watcher = true,
     },
     window = {
-      width = 'fit_content',
+      position = 'left',
+      width = 40,
       mappings = {
         ['<space>'] = 'none', -- don't conflict with leader
       },

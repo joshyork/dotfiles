@@ -48,6 +48,15 @@ autocmd('BufReadPost', {
   end,
 })
 
+-- Set comment string for dotenv files
+autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = augroup('dotenv-comments', { clear = true }),
+  pattern = { '.env', '.env.*' },
+  callback = function()
+    vim.bo.commentstring = '# %s'
+  end,
+})
+
 -- Close some filetypes with q
 autocmd('FileType', {
   group = augroup('close-with-q', { clear = true }),

@@ -2,8 +2,16 @@
 
 ## Communication
 
-- When presenting options, always include pros/cons for each
+- When presenting options, always include pros/cons for each and a recommendation
 - Solo maintainer on most projects - no need for team-size tradeoffs
+- Concise answers — no filler, no restating the question
+- When proposing code changes, show the diff or specific edit, not the whole file
+- Flag assumptions explicitly so I can correct early
+
+## Autonomy
+
+- Public API surface, DB schema, cross-package boundaries: stop and ask
+- Internal implementation within a single file/module: just do it
 
 ## Commits
 
