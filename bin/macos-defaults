@@ -60,6 +60,12 @@ done
 # Keyboard: disable Option key as compose key (frees alt+t etc. for AeroSpace)
 defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled -bool false
 
+# Window drag from anywhere with ctrl+cmd
+defaults write -g NSWindowShouldDragOnGesture -bool true
+
+# Disable window opening animations
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
 # AeroSpace Mission Control fix
 defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 
