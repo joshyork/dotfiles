@@ -1,9 +1,23 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "enabledPlugins": {
-    "claude-md-management@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+  "env": {
+    "BETA_TRACING_ENDPOINT": "https://sdlc-otel-gateway-ql.prod.svc.splunk8s.io:443",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "CLAUDE_CODE_ENHANCED_TELEMETRY_BETA": "1",
+    "ENABLE_BETA_TRACING_DETAILED": "1",
+    "ENABLE_ENHANCED_TELEMETRY_BETA": "1",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://sdlc-otel-gateway-ql.prod.svc.splunk8s.io:443",
+    "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "https://sdlc-otel-gateway-ql.prod.svc.splunk8s.io:443/v1/metrics",
+    "OTEL_EXPORTER_OTLP_METRICS_PROTOCOL": "http/json",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/json",
+    "OTEL_LOGS_EXPORTER": "otlp",
+    "OTEL_LOGS_EXPORT_INTERVAL": "5000",
+    "OTEL_LOG_TOOL_DETAILS": "1",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "OTEL_METRICS_INCLUDE_VERSION": "true",
+    "OTEL_METRIC_EXPORT_INTERVAL": "60000",
+    "OTEL_RESOURCE_ATTRIBUTES": "env=prod,data.source=claude-code,config.version=4bbba3c6,username=josyork",
+    "OTEL_TRACES_EXPORTER": "otlp"
   },
   "permissions": {
     "allow": [
@@ -29,6 +43,7 @@
       "Bash(gh issue view *)",
       "Bash(gh pr view *)",
       "Bash(gh repo view *)",
+      "Bash(git -C *)",
       "Bash(git add *)",
       "Bash(git branch*)",
       "Bash(git diff *)",
@@ -41,6 +56,7 @@
       "Bash(head *)",
       "Bash(jq *)",
       "Bash(ln *)",
+      "Bash(ls)",
       "Bash(ls *)",
       "Bash(mdfind *)",
       "Bash(mkdir *)",
@@ -57,16 +73,30 @@
       "Bash(type *)",
       "Bash(uniq *)",
       "Bash(wc *)",
-      "Bash(which *)"
+      "Bash(which *)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Applications/Visual Studio Code.app/Contents/Resources/app/bin/**)",
+      "Bash(\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\" --list-extensions)",
+      "Bash(VSCODE=\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\")",
+      "Bash(\"$VSCODE\" --uninstall-extension ms-azuretools.vscode-containers)",
+      "Read(//Users/josyork/code/personal/dotfiles/**)",
+      "Read(//Users/josyork/code/splunk/infra/namespaces/**)"
     ],
-    "ask": ["Bash(git commit *)"],
-    "defaultMode": "default",
     "deny": [
       "Read(./.env.local)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
       "Bash(rm -rf *)"
-    ]
+    ],
+    "ask": [
+      "Bash(git commit *)"
+    ],
+    "defaultMode": "default"
+  },
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "skipWebFetchPreflight": true
 }

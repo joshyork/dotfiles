@@ -1,0 +1,190 @@
+# Note: This file is partially managed by dev-login. dev-login will:
+#   * update this file with new or missing fields, leaving the values to override by the user
+#   * manage comments in this file as documentation for the config
+version: "1"
+use-browser: true # If disabled, auth flows will not attempt to open a brower, and rely on the user to copy/paste output.
+k8s:
+  enabled: true
+  refresh-config: false # update kubeconfig from https://k8s-infra-downloads.control1.control.us-west-2.splunk8s.io/downloads/v1/kubeconfig. If config is empty, kubeconfig is fetched regardless of this setting.
+  config: /Users/josyork/.kube/config # kube config file to update
+  # currently only one okta environment can be logged in at a time, unless kubeconig is edited to specify different users for the il2 and il5 clusters.
+  environments:
+    - name: splunkcloud
+      enabled: true
+      client-id: 0oastqarzTYv6iYTw2p6
+      auth-url: https://splunkcloud.okta.com/oauth2/aussub41r37XJ3lI42p6/v1/device/authorize
+      token-url: https://splunkcloud.okta.com/oauth2/aussub41r37XJ3lI42p6/v1/token
+      user: dev@splunk # kubeconfig user to update
+artifactory:
+  enabled: true
+  use-netrc: true # store artifactory creds in ~/.netrc
+  use-jf-cli: true # store jfrog cli creds in ~/.jfrog/jfrog-cli.conf.v6
+  client-id: "" # OAuth client ID for client credentials flow (leave empty for device code flow)
+  client-private-key: "" # Path to private key file (PEM or JWK format) for client credentials flow
+  package-types:
+    #
+    # Note:
+    # Any package type not wanted must be explicitly disabled by setting enabled: false.
+    # Some package types specific to an OS not present are automatically skipped, even if enabled.
+    # Some package type logins require the package manager to be present on PATH, otherwise they are skipped (e.g. docker, podman, conan, uv, cargo, apt-get, yum/dnf)
+    #
+    cargo:
+      enabled: true
+      config: /Users/josyork/.cargo/config.toml # cargo remote config file to update
+      credentials: /Users/josyork/.cargo/credentials.toml # cargo credentials file to update
+      repository: cargo-test-local # cargo repository to login to (cargo-test-local | cargo-remote)
+    conan:
+      enabled: true
+      config: /Users/josyork/.conan2/remotes.json # conan remote config file to update
+      repository: conan-test #conan repository to login to (conan | conan-test)
+    debian:
+      enabled: true
+      component: main # debian component to install packages from
+      distribution: stable # debian distribution to install packages from
+      repository: debian-test # debian repo to login to (debian | debian-test | debian-remote | debian-security-remote)
+    docker:
+      enabled: true
+      registries:
+        - registry: docker.repo.splunkdev.net
+          enabled: true
+        - registry: docker-test.repo.splunkdev.net
+          enabled: true
+        - registry: docker-hub.repo.splunkdev.net
+          enabled: true
+        - registry: docker-quay.repo.splunkdev.net
+          enabled: false
+        - registry: docker-ghcr.repo.splunkdev.net
+          enabled: false
+        - registry: docker-gcr.repo.splunkdev.net
+          enabled: false
+        - registry: docker-cisco.repo.splunkdev.net
+          enabled: false
+        - registry: docker-mcr.repo.splunkdev.net
+          enabled: false
+        - registry: docker-k8s.repo.splunkdev.net
+          enabled: false
+        - registry: docker-jfrog.repo.splunkdev.net
+          enabled: false
+        - registry: docker-startree.repo.splunkdev.net
+          enabled: false
+    gems:
+      enabled: true
+      config: /Users/josyork/.gemrc # gem config file to update
+      credentials: /Users/josyork/.gem/credentials # gem credentials file to update
+      repository: gems-test # which gems repository to login to (gems | gems-test)
+    generic:
+      enabled: true
+      config: /Users/josyork/.artifactory/config # artifactory config file to create
+    gradle:
+      enabled: true
+      config: /Users/josyork/.gradle/gradle.properties # gradle config file to create
+      repository: maven-test # gradle repository to login to (maven | maven-test)
+    helm:
+      enabled: true
+      config: /Users/josyork/Library/Preferences/helm/repositories.yaml # helm config file to update
+    maven:
+      enabled: true
+      config: /Users/josyork/.m2/settings.xml # maven settings.xml file to update
+      repository: maven-test # maven repository to login to (maven | maven-test)
+    npm:
+      enabled: true
+      config: /Users/josyork/.npmrc # npm config file to update
+      registry: npm-test # registry to configure as default (npm | npm-test)
+    nuget:
+      enabled: true
+    pypi:
+      enabled: true
+      pip-config: /Users/josyork/.pip/pip.conf # pip config file to update
+      pypi-config: /Users/josyork/.pypirc # pypi config file to update
+      uv-config: /Users/josyork/.config/uv/uv.toml # uv config file to update
+      registry: pypi # Registry to configure (pypi | pypi-test)
+    rpm:
+      enabled: true
+      config: artifactory.repo # name of the yum repo file to put in /etc/yum.repos.d/
+      repository: rpm-test # yum repo to login to (rpm | rpm-test)
+    terraform:
+      enabled: true
+      config: /Users/josyork/.terraformrc # terraform config file to update
+      provider-repository: terraform-provider # terraform provider repository to login to (terraform-provider | terraform-provider-test)
+    sbt:
+      enabled: true
+      credentials: /Users/josyork/.sbt/credentials # sbt credential file
+      repository: sbt-test # sbt repository to login to (sbt | sbt-test)
+gcp:
+  account: josyork@splunkcloud.com
+  enabled: false
+  use-netrc: true # Store the access token in the user's netrc file.
+  service-account: bazel-cache-sa-ro@bazel-infra-staging-067c.iam.gserviceaccount.com # Service account to impersonate. Set to empty string to disable impersonation.
+  service-account-ttl: 12h
+aws:
+  enabled: false
+  config: /Users/josyork/.aws/config # AWS config file path
+  credentials: /Users/josyork/.aws/credentials # AWS credentials file path
+  default-profile: "" # AWS config profile to use for AWS_PROFILE eval output. If empty, no AWS_PROFILE is printed to stdout.
+  session-duration: 43200 # Session duration in seconds (default 12 hours, max depends on role settings)
+  environments:
+    - name: splunkcloud
+      enabled: true
+      description: AWS for cloud
+      endpoint: https://splunkcloud.okta.com
+      client-id: 0oasfwc0nhME7OCCl2p6 # AWS SAML app client ID
+      oauth-client-id: 0oange5u0b7u4g0Qc2p7 # OAuth client ID for device code flow
+      # On first login, accounts and available roles will be populated from the auth flow and all
+      # roles will be disabled by default. You must enable the roles you want
+      # then rerun dev-login.
+      accounts: []
+    - name: il2stg
+      enabled: false
+      description: AWS IL2 Stg
+      endpoint: https://splunkcloud.okta.com
+      client-id: 0oa4970a81cTHXP6u2p7
+      oauth-client-id: 0oange5u0b7u4g0Qc2p7
+      accounts: []
+    - name: il5stg
+      enabled: false
+      description: AWS IL5 Stg
+      endpoint: https://splunkcloud.okta.com
+      client-id: 0oabz83vqnHbEeLYI2p7
+      oauth-client-id: 0oange5u0b7u4g0Qc2p7
+      accounts: []
+    - name: il2
+      enabled: false
+      description: AWS IL2
+      endpoint: https://splunkcloudgc.okta.com
+      client-id: 0oauqa8e1cJwjIvmd296
+      oauth-client-id: 0oalar4avk88jhqnb297
+      accounts: []
+    - name: il5
+      enabled: false
+      description: AWS IL5
+      endpoint: https://splunkcloudfed.okta-gov.com
+      client-id: 0oa7chac6JLJEPxxl0j6
+      oauth-client-id: 0oaairusurW73jJuK0j6
+      accounts: []
+    - name: olly-aws
+      enabled: false
+      description: o11y AWS
+      endpoint: https://splunkcloud.okta.com
+      client-id: 0oaavwsfucFMhRdir2p7
+      oauth-client-id: 0oange5u0b7u4g0Qc2p7
+      accounts: []
+    - name: olly-aws-il2
+      enabled: false
+      description: o11y AWS IL2
+      endpoint: https://splunkcloudgc.okta.com
+      client-id: 0oaulhiyvmnVi7Q9v297
+      oauth-client-id: 0oalar4avk88jhqnb297
+      accounts: []
+    - name: olly-aws-il5
+      enabled: false
+      description: o11y AWS IL5
+      endpoint: https://splunkcloudfed.okta-gov.com
+      client-id: 0oa19qpxfmqwvgQd20j7
+      oauth-client-id: 0oaairusurW73jJuK0j6
+      accounts: []
+gitlab:
+  enabled: true
+  config: /Users/josyork/.config/glab-cli/config.yml # glab-cli config file to update
+forge:
+  enabled: false # Login to Forge AI platform. Outputs FORGE_TOKEN env var.
+  dev: false # Target the dev Forge deployment instead of production. Can also be set with --dev flag.
