@@ -39,7 +39,7 @@ alias incgrok="ngrok http 3000 --domain=desired-turtle-stable.ngrok-free.app"
 alias tmux-keys='tmux list-keys | fzf'
 # splunk claude
 alias cl='claude-login -m Claude-Opus-4.6 > ~/.cl'
-alias claude='source ~/.cl && claude'
+alias claude='[[ -f ~/.cl ]] && source ~/.cl; command claude'
 
 
 # Set tab title to current folder name only
