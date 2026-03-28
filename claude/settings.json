@@ -21,15 +21,13 @@
   },
   "permissions": {
     "allow": [
-      "Edit(*)",
+      "Edit",
       "Read",
       "WebFetch",
       "WebSearch",
-      "Write(*)",
+      "Write",
       "Bash(aerospace *)",
-      "Bash(brew info *)",
-      "Bash(brew list *)",
-      "Bash(brew search *)",
+      "Bash(brew *)",
       "Bash(cat *)",
       "Bash(chmod *)",
       "Bash(cp *)",
@@ -40,18 +38,8 @@
       "Bash(env)",
       "Bash(file *)",
       "Bash(find *)",
-      "Bash(gh issue view *)",
-      "Bash(gh pr view *)",
-      "Bash(gh repo view *)",
-      "Bash(git -C *)",
-      "Bash(git add *)",
-      "Bash(git branch*)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git ls-tree *)",
-      "Bash(git remote *)",
-      "Bash(git show *)",
-      "Bash(git status*)",
+      "Bash(gh *)",
+      "Bash(git *)",
       "Bash(grep *)",
       "Bash(head *)",
       "Bash(jq *)",
@@ -73,23 +61,21 @@
       "Bash(type *)",
       "Bash(uniq *)",
       "Bash(wc *)",
-      "Bash(which *)",
-      "Read(//usr/local/bin/**)",
-      "Read(//Applications/Visual Studio Code.app/Contents/Resources/app/bin/**)",
-      "Bash(\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\" --list-extensions)",
-      "Bash(VSCODE=\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\")",
-      "Bash(\"$VSCODE\" --uninstall-extension ms-azuretools.vscode-containers)",
-      "Read(//Users/josyork/code/personal/dotfiles/**)",
-      "Read(//Users/josyork/code/splunk/infra/namespaces/**)"
+      "Bash(which *)"
     ],
     "deny": [
       "Read(./.env.local)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
-      "Bash(rm -rf *)"
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)"
     ],
     "ask": [
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ],
     "defaultMode": "default"
   },

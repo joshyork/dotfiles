@@ -3,10 +3,13 @@
 ## Communication
 
 - When presenting options, always include pros/cons for each and a recommendation
-- Solo maintainer on most projects - no need for team-size tradeoffs
 - Concise answers — no filler, no restating the question
 - When proposing code changes, show the diff or specific edit, not the whole file
 - Flag assumptions explicitly so I can correct early
+
+## Shell Commands
+
+- Prefer multiple sequential Bash calls over piped commands
 
 ## Autonomy
 
