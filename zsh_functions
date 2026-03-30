@@ -2,11 +2,6 @@ function killPort {
     kill $(lsof -ti tcp:$1)
 }
 
-function code {
-    [[ -f ~/.cl ]] && set -a && source ~/.cl && set +a
-    command code "$@"
-}
-
 # https://cht.sh
 cheat() {
   curl cht.sh/$1
